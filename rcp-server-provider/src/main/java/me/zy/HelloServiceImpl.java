@@ -1,5 +1,6 @@
 package me.zy;
 
+@RpcService(IHelloService.class)
 public class HelloServiceImpl implements IHelloService {
     @Override
     public String sayHello(String content) {

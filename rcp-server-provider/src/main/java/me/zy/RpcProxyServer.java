@@ -10,11 +10,11 @@ import java.util.concurrent.Executors;
  * RPC服务代理类，用来对外暴露服务
  */
 public class RpcProxyServer {
-    ExecutorService executorService = Executors.newCachedThreadPool();
+   /* ExecutorService executorService = Executors.newCachedThreadPool();
 
-    /**
+    *//**
      * 发布方法
-     */
+     *//*
     public void publisher(Object service,int port){
         ServerSocket serverSocket = null;
 
@@ -24,7 +24,7 @@ public class RpcProxyServer {
                 Socket socket = serverSocket.accept();
 
                 //每一个Socker交给一个processHandler来处理
-                executorService.execute(new ProcessorHandler(socket,service));
+                    executorService.execute(new ProcessorHandler(socket,service));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,5 +38,5 @@ public class RpcProxyServer {
             }
         }
 
-    }
+    }*/
 }
