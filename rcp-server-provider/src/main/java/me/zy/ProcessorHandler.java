@@ -1,5 +1,7 @@
 package me.zy;
 
+import org.springframework.util.StringUtils;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -66,6 +68,11 @@ public class ProcessorHandler implements Runnable{
     private Object invoke(RpcRequest request) throws ClassNotFoundException, NoSuchMethodException,     InvocationTargetException, IllegalAccessException {
         //反射调用
         String serviceName = request.getClassName();
+        String version = request.getVersion();
+        //版本号判断
+        if(!StringUtils.isEmpty(version)){
+            serviceName += "-" + version;
+        }
         Object service = handlerMap.get(serviceName);
         if(service == null){
             throw new RuntimeException("service not found:" + serviceName);

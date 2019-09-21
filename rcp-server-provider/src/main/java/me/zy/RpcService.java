@@ -2,6 +2,7 @@ package me.zy;
 
 import org.springframework.stereotype.Component;
 
+import javax.xml.bind.annotation.XmlType;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -17,4 +18,6 @@ import java.lang.annotation.Target;
 public @interface RpcService {
     //服务的接口
     Class<?> value();
+
+    String version() default "";
 }

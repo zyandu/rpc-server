@@ -5,6 +5,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -61,6 +62,10 @@ public class ZyRpcServer implements ApplicationContextAware, InitializingBean {
                  //注解类
                  RpcService rpcService = serviceBean.getClass().getAnnotation(RpcService.class);
                  String serviceName = rpcService.value().getName();
+                 String version = rpcService.version();
+                 if(!StringUtils.isEmpty(version)){
+                     serviceName += "-" + version;
+                 }
                  handlerMap.put(serviceName,serviceBean);
              }
          }
